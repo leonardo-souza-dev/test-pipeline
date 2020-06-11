@@ -24,13 +24,17 @@ pipeline {
         sh 'docker build -t test-pipeline:latest . '
       }
     }
-    stage('Docker push') {
+    stage('Docker login') {
       steps {
         sh 'echo "$DOCKERHUB_CREDENTIALS" | docker login -u=ltreze --password-stdin '
       }
+    }
+    stage('Docker tag') {
       steps {
         sh 'docker tag test-pipeline ltreze/test-pipeline:hub '
       }
+    }
+    stage('Docker push') {
       steps {
         sh 'docker push ltreze/test-pipeline '
       }
