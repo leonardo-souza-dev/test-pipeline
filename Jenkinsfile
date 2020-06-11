@@ -19,6 +19,11 @@ pipeline {
         sh 'dotnet build '
       }
     }
+    stage('cd app root') {
+      steps {
+        sh 'cd /var/jenkins_home/workspace/test-pipeline_master '
+      }
+    }
     stage('Docker build Stage') {
       steps {
         sh 'docker build -t test-pipeline:latest . '
