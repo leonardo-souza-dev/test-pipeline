@@ -26,9 +26,9 @@ pipeline {
     // }
     stage('Docker login') {
       steps {
-        echo "${env.DOCKERHUB_LOGIN}"
+        echo "${env.DOCKERHUB_USERNAME}"
         echo "${env.DOCKERHUB_CREDENTIALS}"
-        sh "docker login -u=${env.DOCKERHUB_LOGIN} -p=${env.DOCKERHUB_CREDENTIALS} "
+        sh "docker login -u=${env.DOCKERHUB_USERNAME} -p=${env.DOCKERHUB_CREDENTIALS} "
       }
     }
     // stage('Docker tag') {
