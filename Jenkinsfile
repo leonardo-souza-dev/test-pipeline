@@ -26,7 +26,7 @@ pipeline {
     }
     stage('Docker login') {
       steps {
-        sh 'echo "$DOCKERHUB_CREDENTIALS" | docker login -u=ltreze --password-stdin '
+        sh 'docker login -u=$DOCKERHUB_LOGIN -p=$DOCKERHUB_CREDENTIALS '
       }
     }
     stage('Docker tag') {
