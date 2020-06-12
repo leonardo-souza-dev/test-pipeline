@@ -24,19 +24,11 @@ pipeline {
     //     sh 'docker build -t test-pipeline:latest . '
     //   }
     // }
-    stage('Docker login1') {
+    stage('Docker login') {
       steps {
-        sh '$DOCKERHUB_LOGIN'
-      }
-    }
-    stage('Docker login2') {
-      steps {
-        sh '$DOCKERHUB_CREDENTIALS'
-      }
-    }
-    stage('Docker login3') {
-      steps {
-        sh 'docker login -u=$DOCKERHUB_LOGIN -p=$DOCKERHUB_CREDENTIALS '
+        echo "${DOCKERHUB_LOGIN}"
+        echo "${DOCKERHUB_CREDENTIALS}"
+        sh "docker login -u=${DOCKERHUB_LOGIN} -p=${DOCKERHUB_CREDENTIALS} "
       }
     }
     // stage('Docker tag') {
